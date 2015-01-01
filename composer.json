@@ -1,0 +1,20 @@
+{
+    "name": "easy-slug/easy-slug",
+    "description": "Creates simple slug",
+    "authors": [
+        {
+            "name": "Viraj Khatavkar",
+            "email": "viraj.2438@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "EasySlug\\EasySlug": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
