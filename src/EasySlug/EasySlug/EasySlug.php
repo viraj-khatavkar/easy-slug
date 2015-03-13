@@ -8,9 +8,9 @@ class EasySlug
 
     private $_easy_slug_repo;
 
-    public function __construct(EasySlugRepository $easy_slug_repo)
+    public function __construct()
     {
-        $this->_easy_slug_repo = $easy_slug_repo;
+        $this->_easy_slug_repo = new EasySlugRepository;
     }
 
     /**

@@ -1,5 +1,7 @@
 <?php namespace EasySlug\EasySlug;
 
+use Illuminate\Support\Facades\DB;
+
 class EasySlugRepository implements EasySlugInterface
 {
 
