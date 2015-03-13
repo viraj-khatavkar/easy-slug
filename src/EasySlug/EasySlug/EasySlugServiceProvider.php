@@ -1,6 +1,7 @@
 <?php namespace EasySlug\EasySlug;
 
 use Illuminate\Support\ServiceProvider;
+use EasySlugRepository;
 
 class EasySlugServiceProvider extends ServiceProvider {
 
@@ -18,9 +19,9 @@ class EasySlugServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app->bind('easyslug', function($app)
+		$this->app->bind('easyslug', function(EasySlugRepository $easySlugRepository)
 		{
-			return new EasySlug($app);
+			return new EasySlug($easySlugRepository);
 		});
 	}
 
