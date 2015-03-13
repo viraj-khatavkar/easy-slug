@@ -8,17 +8,9 @@ class EasySlug
 
     private $_easy_slug_repo;
 
-    /**
-     * Laravel application
-     *
-     * @var \Illuminate\Foundation\Application
-     */
-    public $app;
-
-    public function __construct($app)
+    public function __construct()
     {
         $this->_easy_slug_repo = new EasySlugRepository;
-        $this->app = $app;
     }
 
     /**

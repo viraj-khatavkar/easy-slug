@@ -18,11 +18,9 @@ class EasySlugServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-
-
-		$this->app->bind('easyslug', function($app)
+		App::bind('easyslug', function()
 		{
-			return new \EasySlug\EasySlug\EasySlug($app);
+			return new \EasySlug;
 		});
 	}
 
