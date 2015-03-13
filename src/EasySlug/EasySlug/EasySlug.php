@@ -14,7 +14,7 @@ class EasySlug
     }
 
     /**
-     * Creates slug for the provided string
+     * Creates slug for the provided string.
      *
      * If the same slug is present in given table, then numbers are
      * appended at the end
@@ -26,7 +26,7 @@ class EasySlug
      * @param string $seperator
      * @return string
      */
-    public function generateSlug($name, $table, $column, $seperator = "-")
+    public function generateSlug($name, $table, $column = "slug", $seperator = "-")
     {
         $temporary_slug = $this->getSlug($name, "-");
 
@@ -35,7 +35,7 @@ class EasySlug
         if($count_of_same_slugs === 0)
             return $temporary_slug;
 
-        return $this->getSlug($name." ".($count_of_same_slugs+1));
+        return $this->getSlug($name." ".($count_of_same_slugs+1), $seperator);
     }
 
     /**
