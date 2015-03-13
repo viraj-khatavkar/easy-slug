@@ -1,9 +1,8 @@
 <?php namespace EasySlug\EasySlug;
 
-
 interface EasySlugInterface
 {
 
-    public static function generateSlug($name, $seperator = "-");
+    public function getCountOfSameSlugs($table, $column, $slug);
 
 } 
