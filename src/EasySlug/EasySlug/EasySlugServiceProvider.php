@@ -20,7 +20,7 @@ class EasySlugServiceProvider extends ServiceProvider {
 	{
 		App::bind('easyslug', function()
 		{
-			return new \EasySlug;
+			return new EasySlug;
 		});
 	}
 
