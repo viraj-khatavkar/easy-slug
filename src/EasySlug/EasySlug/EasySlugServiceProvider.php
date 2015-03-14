@@ -1,7 +1,6 @@
 <?php namespace EasySlug\EasySlug;
 
 use Illuminate\Support\ServiceProvider;
-use EasySlugRepository;
 
 class EasySlugServiceProvider extends ServiceProvider {
 
