@@ -3,6 +3,6 @@
 interface EasySlugInterface
 {
 
-    public function getCountOfSameSlugs($table, $column, $slug);
+    public function getCountOfMatchingSlugs($table, $column, $slug);
 
 } 

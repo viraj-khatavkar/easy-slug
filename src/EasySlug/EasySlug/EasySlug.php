@@ -29,16 +29,13 @@ class EasySlug
      * @param string $separator
      * @return string
      */
-    public function generateSlug($string, $table, $column = "slug", $separator = "-")
+    public function generateUniqueSlug($string, $table, $column = "slug", $separator = "-")
     {
-        $temporary_slug = $this->getSlug($string, "-");
+        $temporary_slug = $this->generateSlug($string, "-");
 
-        $count_of_same_slugs = $this->_easy_slug_repo->getCountOfSameSlugs($table, $column, $temporary_slug);
+        $count_of_matching_slugs = $this->_easy_slug_repo->getCountOfMatchingSlugs($table, $column, $temporary_slug);
 
-        if($count_of_same_slugs === 0)
-            return $temporary_slug;
-
-        return $this->getSlug($string." ".($count_of_same_slugs+1), $separator);
+        return $this->getSlug($string." ".($count_of_matching_slugs+1), $separator);
     }
 
     /**
@@ -48,7 +45,7 @@ class EasySlug
      * @param string $separator
      * @return string
      */
-    public function getSlug($string, $separator = "-")
+    public function generateSlug($string, $separator = "-")
     {
         return Str::slug($string, $separator);
     }
