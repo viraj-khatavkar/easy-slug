@@ -33,10 +33,10 @@ You can make a simple slug with DB validation using following code
 <?php
 
 /**
- *@param1            => The string to be slugged
- *@param2            => The table name where slug is stored
- *@param3 (Optional) => The column name of slug. If not specified, by default "slug" is considered
- *@param4 (Optional) => The separator of slug. If not specified, by default "-" is taken
+ * @param1            => The string to be slugged
+ * @param2            => The table name where slug is stored
+ * @param3 (Optional) => The column name of slug. If not specified, by default "slug" is considered
+ * @param4 (Optional) => The separator of slug. If not specified, by default "-" is taken
  */
 
 EasySlug::generateUniqueSlug('Your String', 'table name', $column = "slug", $separator = '-')
@@ -45,10 +45,10 @@ EasySlug::generateUniqueSlug('Your String', 'table name', $column = "slug", $sep
 This function looks for similar slugs in the table/column name specified in parameters.
 If slugs with similar pattern are found it appends numeric digits at the end of slug as follows :
 
-    my-string-slug
-    my-string-slug-2
-    my-string-slug-3
-    my-string-slug-4
+    your-string
+    your-string-2
+    your-string-3
+    your-string-4
 
 ## Simple Slug without database validation
 

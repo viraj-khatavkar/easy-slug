@@ -4,8 +4,6 @@ use Illuminate\Support\Str;
 
 class EasySlug
 {
-    protected $_error_message = "";
-
     /**
      * @var EasySlugRepository
      */
