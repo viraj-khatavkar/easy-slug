@@ -50,4 +50,4 @@ class EasySlug
         return Str::slug($string, $separator);
     }
 
-} 
+}

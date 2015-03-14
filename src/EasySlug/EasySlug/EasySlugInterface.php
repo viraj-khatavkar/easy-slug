@@ -5,4 +5,4 @@ interface EasySlugInterface
 
     public function getCountOfMatchingSlugs($table, $column, $slug);
 
-} 
+}
