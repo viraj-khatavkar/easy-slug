@@ -35,7 +35,10 @@ class EasySlug
 
         $count_of_matching_slugs = $this->_easy_slug_repo->getCountOfMatchingSlugs($table, $column, $temporary_slug);
 
-        return $this->generateSlug($string." ".($count_of_matching_slugs+1), $separator);
+        if($count_of_matching_slugs > 0)
+            return $this->generateSlug($string." ".($count_of_matching_slugs+1), $separator);
+
+        return $temporary_slug;
     }
 
     /**
