@@ -1,6 +1,6 @@
 # EasySlug (Laravel Package)
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/e072de49-18e4-4dba-81c4-02705fe32467/big.png)](https://insight.sensiolabs.com/projects/e072de49-18e4-4dba-81c4-02705fe32467)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/e072de49-18e4-4dba-81c4-02705fe32467/small.png)](https://insight.sensiolabs.com/projects/e072de49-18e4-4dba-81c4-02705fe32467)
 
 ## Quick start
 
