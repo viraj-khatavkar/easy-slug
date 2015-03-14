@@ -6,6 +6,9 @@ class EasySlug
 {
     protected $_error_message = "";
 
+    /**
+     * @var EasySlugRepository
+     */
     private $_easy_slug_repo;
 
     public function __construct(EasySlugRepository $easy_slug)
@@ -20,34 +23,34 @@ class EasySlug
      * appended at the end
      * E.g. your-slug-1, your-slug-2
      *
-     * @param $name
+     * @param $string
      * @param $table
      * @param $column
-     * @param string $seperator
+     * @param string $separator
      * @return string
      */
-    public function generateSlug($name, $table, $column = "slug", $seperator = "-")
+    public function generateSlug($string, $table, $column = "slug", $separator = "-")
     {
-        $temporary_slug = $this->getSlug($name, "-");
+        $temporary_slug = $this->getSlug($string, "-");
 
         $count_of_same_slugs = $this->_easy_slug_repo->getCountOfSameSlugs($table, $column, $temporary_slug);
 
         if($count_of_same_slugs === 0)
             return $temporary_slug;
 
-        return $this->getSlug($name." ".($count_of_same_slugs+1), $seperator);
+        return $this->getSlug($string." ".($count_of_same_slugs+1), $separator);
     }
 
     /**
-     * Creates a slug using Laravel's native slug function
+     * Creates slug using Laravel's native function
      *
-     * @param $name
-     * @param string $seperator
+     * @param $string
+     * @param string $separator
      * @return string
      */
-    public function getSlug($name, $seperator = "-")
+    public function getSlug($string, $separator = "-")
     {
-        return Str::slug($name, $seperator);
+        return Str::slug($string, $separator);
     }
 
 } 
