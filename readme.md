@@ -1,8 +1,10 @@
 # EasySlug (Laravel Package)
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/e072de49-18e4-4dba-81c4-02705fe32467/big.png)](https://insight.sensiolabs.com/projects/e072de49-18e4-4dba-81c4-02705fe32467)
+
 ## Quick start
 
-Entrust provides a flexible way to add Role-based Permissions to **Laravel**.
+EasySlug provides a flexible way to create slugs.
 It is compatible with both **Laravel4** as well as **Laravel5**
 
 ## Installation
