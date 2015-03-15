@@ -11,7 +11,7 @@ It is compatible with both **Laravel4** as well as **Laravel5**
 
 In order to install EasySlug, just add 
 
-    "easy-slug/easy-slug": "2.*"
+    "easy-slug/easy-slug": "2.0.*"
 
 to your composer.json. Then run `composer install` or `composer update`.
 
