@@ -32,6 +32,8 @@ You can make a simple slug with DB validation using following code
 ```php
 <?php
 
+use EasySlug\EasySlug\EasySlugFacade as EasySlug;
+
 /**
  * @param1            => The string to be slugged
  * @param2            => The table name where slug is stored
