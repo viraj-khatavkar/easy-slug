@@ -57,6 +57,8 @@ You can also make a simple slug with string as a input
 ```php
 <?php
 
+use EasySlug\EasySlug\EasySlugFacade as EasySlug;
+
 EasySlug::generateSlug('Your String', $separator = '-')
 ```
 
