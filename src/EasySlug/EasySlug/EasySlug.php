@@ -39,6 +39,29 @@ class EasySlug
         return $temporary_slug;
     }
 
+    public function generateBulkSlugsForTable($table, $column, $slug_column = 'slug')
+    {
+DB::beginTransaction();
+
+            foreach($institutes as $institute):
+
+                $slug = EasySlug::generateSlug($institute->name, '-');
+
+                $no_of_slugs = DB::table('institutes')->where('slug','LIKE',$slug.'%')->where('institute_id', '<', $institute->institute_id)->count();
+
+                if($no_of_slugs > 0)
+                    $slug = $slug.'-'.($no_of_slugs + 1);
+
+
+                DB::table('institutes')
+                    ->where('institute_id', $institute->institute_id)
+                    ->update(['slug' => $slug]);
+
+            endforeach;
+
+            DB::commit();
+    }
+
     /**
      * Creates slug using Laravel's native function
      *
