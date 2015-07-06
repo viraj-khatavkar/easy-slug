@@ -6,9 +6,9 @@
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
-         processIsolation="false"
+         processIsolation="true"
          stopOnFailure="false"
-         syntaxCheck="false"
+         syntaxCheck="true"
 >
     <testsuites>
         <testsuite name="Package Test Suite">

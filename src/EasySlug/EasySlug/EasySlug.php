@@ -1,7 +1,5 @@
 <?php namespace EasySlug\EasySlug;
 
-use Illuminate\Support\Str;
-
 class EasySlug
 {
     /**
@@ -9,7 +7,7 @@ class EasySlug
      */
     private $_easy_slug_repo;
 
-    public function __construct(EasySlugRepository $easy_slug)
+    public function __construct( EasySlugRepository $easy_slug )
     {
         $this->_easy_slug_repo = $easy_slug;
     }
@@ -21,57 +19,56 @@ class EasySlug
      * appended at the end
      * E.g. your-slug-1, your-slug-2
      *
-     * @param $string
-     * @param $table
-     * @param $column
+     * @param        $string
+     * @param        $table
+     * @param        $column
      * @param string $separator
+     *
      * @return string
      */
-    public function generateUniqueSlug($string, $table, $column = "slug", $separator = "-")
+    public function generateUniqueSlug( $string , $table , $column = "slug" , $separator = "-" )
     {
-        $temporary_slug = $this->generateSlug($string, "-");
+        $temporary_slug = $this->generateSlug( $string , "-" );
 
-        $count_of_matching_slugs = $this->_easy_slug_repo->getCountOfMatchingSlugs($table, $column, $temporary_slug);
+        $count_of_matching_slugs = $this->_easy_slug_repo
+            ->getCountOfMatchingSlugs( $table , $column ,
+                                       $temporary_slug );
 
-        if($count_of_matching_slugs > 0)
-            return $this->generateSlug($string." ".($count_of_matching_slugs+1), $separator);
+        if ( $count_of_matching_slugs > 0 )
+        {
+            $temporary_slug = $this->generateSlug( $string . " " . ( $count_of_matching_slugs + 1 ) , $separator );
+
+            $flag = false;
+
+            $i = 2;
+            while($flag == false)
+            {
+                $exact_slugs = $this->_easy_slug_repo->getCountOfExactSlugs($table, $column, $temporary_slug);
+
+                if($exact_slugs > 0)
+                {
+                    $temporary_slug = $this->generateSlug( $string . " " . ( $count_of_matching_slugs + $i ) , $separator );
+                    $i++;
+                }
+                else
+                {
+                    $flag == true;
+                }
+            }
+        }
 
         return $temporary_slug;
     }
 
-    public function generateBulkSlugsForTable($table, $column, $slug_column = 'slug')
-    {
-DB::beginTransaction();
-
-            foreach($institutes as $institute):
-
-                $slug = EasySlug::generateSlug($institute->name, '-');
-
-                $no_of_slugs = DB::table('institutes')->where('slug','LIKE',$slug.'%')->where('institute_id', '<', $institute->institute_id)->count();
-
-                if($no_of_slugs > 0)
-                    $slug = $slug.'-'.($no_of_slugs + 1);
-
-
-                DB::table('institutes')
-                    ->where('institute_id', $institute->institute_id)
-                    ->update(['slug' => $slug]);
-
-            endforeach;
-
-            DB::commit();
-    }
-
     /**
-     * Creates slug using Laravel's native function
-     *
-     * @param $string
+     * @param        $string
      * @param string $separator
+     *
      * @return string
      */
-    public function generateSlug($string, $separator = "-")
+    public function generateSlug( $string , $separator = "-" )
     {
-        return Str::slug($string, $separator);
+        return trim( preg_replace( '/[^a-z0-9]+/' , $separator , strtolower( strip_tags( $string ) ) ) , $separator );
     }
 
 }
