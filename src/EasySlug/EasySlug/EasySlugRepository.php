@@ -4,14 +4,6 @@ use Illuminate\Support\Facades\DB;
 
 class EasySlugRepository
 {
-
-    public $easySlug;
-
-    public function __construct( EasySlug $easySlug )
-    {
-        $this->easySlug = $easySlug;
-    }
-
     /**
      * Returns count of matching slugs
      *
