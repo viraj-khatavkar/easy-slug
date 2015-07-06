@@ -37,7 +37,17 @@ class EasySlugTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('viraj-khatavkar-2', $slug);
     }
-    
+
+    public function test_generates_unique_slug_for_single_word()
+    {
+        $this->repo->shouldReceive('getCountOfMatchingSlugs')->andReturn(1);
+        $this->repo->shouldReceive('getCountOfExactSlugs')->andReturn(0);
+
+        $slug = $this->easySlug->generateUniqueSlug('mangesh', 'demo');
+
+        $this->assertEquals('mangesh-2', $slug);
+    }
+
     public function tearDown()
     {
         m::close();

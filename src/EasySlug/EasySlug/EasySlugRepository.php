@@ -15,7 +15,11 @@ class EasySlugRepository
      */
     public function getCountOfMatchingSlugs( $table , $column , $slug )
     {
-        return DB::table( $table )->where( $column , 'LIKE' , $slug . '-' . '%' )->count();
+        if ( strpos( $slug , '-' ) !== false )
+        {
+            return DB::table( $table )->where( $column , 'LIKE' , $slug . '-' . '%' )->count();
+        };
+        return DB::table( $table )->where( $column , 'LIKE' , $slug . '%' )->count();
     }
 
     public function getCountOfExactSlugs( $table , $column , $slug )
