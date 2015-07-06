@@ -37,7 +37,7 @@ class EasySlugTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('viraj-khatavkar-2', $slug);
     }
-
+    
     public function tearDown()
     {
         m::close();

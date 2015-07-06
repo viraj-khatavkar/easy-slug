@@ -52,7 +52,7 @@ class EasySlug
                 }
                 else
                 {
-                    $flag == true;
+                    $flag = true;
                 }
             }
         }
