@@ -56,6 +56,9 @@ class EasySlug
                 }
             }
         }
+        else {
+            $temporary_slug = $temporary_slug . '-1';
+        }
 
         return $temporary_slug;
     }
