@@ -17,10 +17,10 @@ class EasySlugRepository
     {
         $keywords = explode('-', $slug);
         $total_keywords = count($keywords);
-        if ( is_numeric($keywords[$total_keywords-1]) )
-        {
-            return DB::table( $table )->where( $column , 'LIKE' , $slug . '-' . '%' )->count();
-        }
+        //if ( is_numeric($keywords[$total_keywords-1]) )
+        //{
+        //    return DB::table( $table )->where( $column , 'LIKE' , $slug . '-' . '%' )->count();
+        //}
         return DB::table( $table )->where( $column , 'LIKE' , $slug . '%' )->count();
     }
 
