@@ -57,7 +57,7 @@ class EasySlug
             }
         }
         else {
-            $temporary_slug = $temporary_slug . '-1';
+            $temporary_slug = $temporary_slug; . '-1'; //this last part is ruin my day
         }
 
         return $temporary_slug;
