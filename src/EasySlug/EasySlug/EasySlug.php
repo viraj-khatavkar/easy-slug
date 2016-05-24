@@ -57,6 +57,13 @@ class EasySlug
             }
         }
         else {
+            $keywords = explode('-', $temporary_slug);
+            $total_keywords = count($keywords);
+            
+            if ( is_numeric($keywords[$total_keywords-1]) )
+            {
+                return $temporary_slug;
+            }
             $temporary_slug = $temporary_slug . '-1';
         }
 
