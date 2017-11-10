@@ -33,7 +33,7 @@ class EasySlugTest extends PHPUnit_Framework_TestCase
         $this->repo->shouldReceive('getCountOfMatchingSlugs')->andReturn(1);
         $this->repo->shouldReceive('getCountOfExactSlugs')->andReturn(0);
 
-        $slug = $this->easySlug->generateUniqueSlug('viraj khatavkar', 'demo');
+        $slug = $this->easySlug->generateUniqueSlug('viraj khatavkar', 'demo', 1);
 
         $this->assertEquals('viraj-khatavkar-2', $slug);
     }
@@ -43,7 +43,7 @@ class EasySlugTest extends PHPUnit_Framework_TestCase
         $this->repo->shouldReceive('getCountOfMatchingSlugs')->andReturn(1);
         $this->repo->shouldReceive('getCountOfExactSlugs')->andReturn(0);
 
-        $slug = $this->easySlug->generateUniqueSlug('mangesh', 'demo');
+        $slug = $this->easySlug->generateUniqueSlug('mangesh', 'demo', 1);
 
         $this->assertEquals('mangesh-2', $slug);
     }
