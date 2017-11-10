@@ -26,28 +26,28 @@ class EasySlug
      *
      * @return string
      */
-    public function generateUniqueSlug( $string , $table , $column = "slug" , $separator = "-" )
+    public function generateUniqueSlug( $string , $table , $column = "slug" , $separator = "-", $id)
     {
         $temporary_slug = $this->generateSlug( $string , "-" );
 
         $count_of_matching_slugs = $this->_easy_slug_repo
             ->getCountOfMatchingSlugs( $table , $column ,
-                                       $temporary_slug );
+                $temporary_slug, $id);
 
         if ( $count_of_matching_slugs > 0 )
         {
-            $temporary_slug = $this->generateSlug( $string . " " . ( $count_of_matching_slugs + 1 ) , $separator );
+            $temporary_slug = $this->generateSlug( $string . " " . ( $count_of_matching_slugs + 1 ) , $separator, $id);
 
             $flag = false;
 
             $i = 2;
             while($flag == false)
             {
-                $exact_slugs = $this->_easy_slug_repo->getCountOfExactSlugs($table, $column, $temporary_slug);
+                $exact_slugs = $this->_easy_slug_repo->getCountOfExactSlugs($table, $column, $temporary_slug, $id);
 
                 if($exact_slugs > 0)
                 {
-                    $temporary_slug = $this->generateSlug( $string . " " . ( $count_of_matching_slugs + $i ) , $separator );
+                    $temporary_slug = $this->generateSlug( $string . " " . ( $count_of_matching_slugs + $i ) , $separator, $id);
                     $i++;
                 }
                 else
@@ -59,7 +59,7 @@ class EasySlug
         else {
             $keywords = explode('-', $temporary_slug);
             $total_keywords = count($keywords);
-            
+
             if ( is_numeric($keywords[$total_keywords-1]) )
             {
                 return $temporary_slug;
